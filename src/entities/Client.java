@@ -1,5 +1,6 @@
 package entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Client {
@@ -16,6 +17,12 @@ public class Client {
 		this.name = name;
 		this.email = email;
 		this.birthDate = birthDate;
+	}
+	
+	@Override
+	public String toString() {
+		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		return " "+this.name + " " + sdf2.format(birthDate) + " " + this.email;
 	}
 
 	public String getName() {

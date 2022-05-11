@@ -1,5 +1,6 @@
 package entities;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -62,5 +63,23 @@ public class Order {
 	
 	public void removeItem(OrderItem item) {
 		this.items.add(item);
+	}
+	
+	public Double total() {
+		Double totalPrice = 0.0;
+		for(OrderItem item: items) {
+			totalPrice =+ item.getPrice() * item.getQuantity();
+		}
+		return totalPrice;
+	}
+	
+	public void orderSummary() {
+		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		System.out.println("Order moment: "+sdf2.format(moment));
+		System.out.println("Order status:t: "+this.status);
+		System.out.println("\nClient: "+ client.toString());
+		for(OrderItem item: items) {
+			System.out.println(item.getProduct() + ", " + item.getPrice() + ", " + item.getQuantity());
+		}
 	}
 }

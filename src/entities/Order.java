@@ -8,21 +8,26 @@ import java.util.List;
 import entities.enums.OrderStatus;
 
 public class Order {
-	private Date moment;
+	
 	private List<OrderItem> items = new ArrayList<>();
 	private OrderStatus status;
 	private Client client;
+	private Date moment;
 	
 	public Order() {
 		super();
 	}
 	
-	public Order(Date moment, List<OrderItem> items, OrderStatus status, Client client) {
+	public Order(List<OrderItem> items, OrderStatus status, Client client) {
 		super();
-		this.moment = moment;
 		this.items = items;
 		this.status = status;
 		this.client = client;
+	}
+
+	public Order(List<OrderItem> items, OrderStatus status, Client client, Date moment) {
+		this(items, status, client);
+		this.moment = moment;
 	}
 
 	public Date getMoment() {
@@ -76,10 +81,16 @@ public class Order {
 	public void orderSummary() {
 		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		System.out.println("Order moment: "+sdf2.format(moment));
-		System.out.println("Order status:t: "+this.status);
-		System.out.println("\nClient: "+ client.toString());
+		System.out.println("Order status: "+this.status);
+		System.out.println("Client: "+ client.toString());
+		
+		System.out.println();
+		System.out.println("Order items:");
+		Double total = 0.0;
 		for(OrderItem item: items) {
-			System.out.println(item.getProduct() + ", " + item.getPrice() + ", " + item.getQuantity());
+			System.out.println(item.getProduct().getName() + ", R$: " + item.getPrice() + ", Quantity" + item.getQuantity());
+			total += item.subTotal();
 		}
+		System.out.println(total);
 	}
 }

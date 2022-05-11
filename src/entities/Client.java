@@ -21,8 +21,8 @@ public class Client {
 	
 	@Override
 	public String toString() {
-		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		return " "+this.name + " " + sdf2.format(birthDate) + " " + this.email;
+		SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+		return "name: "+this.name + ", Birth Date: " + sdf2.format(birthDate) + ", e-mail: " + this.email;
 	}
 
 	public String getName() {

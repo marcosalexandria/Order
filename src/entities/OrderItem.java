@@ -5,7 +5,6 @@ public class OrderItem {
 	private Double price;
 	private Product product;
 	
-	
 	public OrderItem() {
 		super();
 	}
@@ -16,6 +15,7 @@ public class OrderItem {
 		this.price = price;
 		this.product = product;
 	}
+	
 	
 
 	public Integer getQuantity() {
